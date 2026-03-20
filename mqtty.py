@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 MQTT Backdoor Shell — topic autodiscovery via wildcard subscribe
-Usage: python3 mqtt_shell.py <BROKER_IP> [--port 1883]
+Usage: python3 mqtt_shell.py <BROKER_IP>
 """
 
 import sys
@@ -109,8 +109,7 @@ def main():
     parser = argparse.ArgumentParser(
         description="MQTT Backdoor Shell — topic autodiscovery via wildcard subscribe"
     )
-    parser.add_argument("ip",                              help="Broker IP address")
-    parser.add_argument("--port", "-p", type=int, default=1883, help="Broker port (default: 1883)")
+    parser.add_argument("ip", help="Broker IP address")
     args = parser.parse_args()
 
     try:
@@ -121,9 +120,9 @@ def main():
     client.on_connect = on_connect
     client.on_message = on_message
 
-    print(f"[*] Connecting to {args.ip}:{args.port}...")
+    print(f"[*] Connecting to {args.ip}:1883...")
     try:
-        client.connect(args.ip, args.port, keepalive=60)
+        client.connect(args.ip, 1883, keepalive=60)
     except Exception as e:
         print(f"[-] Connection failed: {e}")
         sys.exit(1)
