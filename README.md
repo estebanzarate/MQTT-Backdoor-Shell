@@ -26,7 +26,7 @@ python3 -m pip install paho-mqtt prompt_toolkit
 ## Usage
 
 ```bash
-python3 mqtt_shell.py <BROKER_IP> [--port 1883]
+python3 mqtt_shell.py <BROKER_IP>
 ```
 
 **Example:**
